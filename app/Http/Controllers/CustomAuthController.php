@@ -111,6 +111,7 @@ class CustomAuthController extends Controller
             //return redirect("/")->withSuccess('You have signed-in');
         }
         else if( $check['registerType'] == 2 ){
+            DB::table('users')->where('id', '=', $id)->update(['approved' => '1']);
             //Mail::to($send_mail)->send(new TestMail($id));
             $message = array('success' => '2', 'message' => 'Logged In');
             return response()->json($message);
